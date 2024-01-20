@@ -104,7 +104,7 @@ public class GravityGun : MonoBehaviour, IFire
                     activate.SetState(true);
                 }
                 
-                if (hit.rigidbody.constraints == (RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation)){
+                if (hit.transform.GetComponent<PhysicsObject>() && hit.rigidbody.constraints == (RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation)){
                     hit.rigidbody.constraints = RigidbodyConstraints.None;
                 }
 
@@ -146,7 +146,7 @@ public class GravityGun : MonoBehaviour, IFire
 		    return;
 	    }
 	    
-	    if (Input.GetMouseButtonDown(1) && _objectInHold.GetComponent<Rigidbody>().constraints == RigidbodyConstraints.None){
+	    if (Input.GetMouseButtonDown(1) && _objectInHold.GetComponent<PhysicsObject>() && _objectInHold.GetComponent<Rigidbody>().constraints == RigidbodyConstraints.None){
 	       _objectInHold.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 	       StopHold();
 	    }
