@@ -24,6 +24,8 @@ public class CameraLook : MonoBehaviour
 
     private bool _responseToInput = true;
     
+    private float _currentSensitivity = .1f;
+    
     private float _startFov;
     private float _senseMultiplier = 1;
     private float _rotationSpeed;
@@ -68,8 +70,8 @@ public class CameraLook : MonoBehaviour
         // }
         //var timeScaleSensMultiplier = Time.timeScale < 0.5f ? 0.5f : Time.timeScale;
         var mouseDelta = _playerInput.GetGameVector2Input("Look");
-        float yRot = mouseDelta.x * m_XSensitivity * _senseMultiplier;
-        float xRot = mouseDelta.y * m_YSensitivity * _senseMultiplier;
+        float yRot = mouseDelta.x * _currentSensitivity * _senseMultiplier;
+        float xRot = mouseDelta.y * _currentSensitivity * _senseMultiplier;
         _rotationSpeed = Mathf.Abs(yRot) + Mathf.Abs(xRot);
 
         m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
@@ -118,8 +120,7 @@ public class CameraLook : MonoBehaviour
 
     public void SetSense(float value)
     {
-        m_XSensitivity = value;
-        m_YSensitivity = value;
+        _currentSensitivity = value;
     }
 
     /*public void UpdateCursorLock()
@@ -185,8 +186,7 @@ public class CameraLook : MonoBehaviour
     }
     
     public void SetSensitivity(float value){
-        m_XSensitivity = value;
-        m_YSensitivity = value;
+        _currentSensitivity = value;
     }
 
 }

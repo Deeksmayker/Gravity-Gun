@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour{
         
         Invoke(nameof(TypeLevelName), delay);
     }
-
+    
     private void Update(){
         LevelTime += Time.deltaTime;
     }
@@ -140,7 +140,6 @@ public class GameManager : MonoBehaviour{
     public void SetVolume(float value){
         Volume = value;
         AudioListener.volume =  Volume;
-        SaveGame();
     }
     
     public void LoadLimbo(){
@@ -203,7 +202,8 @@ public class GameManager : MonoBehaviour{
             SetVolume(PlayerPrefs.GetFloat("Volume"));
         }
         if (PlayerPrefs.HasKey("Sensitivity")){
-            SetSensitivity(PlayerPrefs.GetFloat("Sensitivity"));
+            Sensitivity = PlayerPrefs.GetFloat("Sensitivity");
+            SetSensitivity(Sensitivity);
         }
         if (PlayerPrefs.HasKey("Language")){
             SetLanguageDirect(PlayerPrefs.GetInt("Language"));

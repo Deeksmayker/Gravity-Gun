@@ -5,6 +5,7 @@ public class GameUi : MonoBehaviour{
     [SerializeField] private GameObject spawnPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider sensitivitySlider;
     
     private PlayerInputHandler _input;
     
@@ -28,6 +29,7 @@ public class GameUi : MonoBehaviour{
         panel.SetActive(!panel.activeSelf);
         if (panel.activeSelf){
             volumeSlider.value = GameManager.Instance.Volume;
+            sensitivitySlider.value = GameManager.Instance.Sensitivity;
             _input.SetResponseToInput(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

@@ -90,6 +90,10 @@ public class ObjectsSpawner : MonoBehaviour{
         
         var dir = Camera.main.transform.forward * 5;
         dir.y = Mathf.Clamp(dir.y, 0, 10);
-        _objectsBuffer.Add(Instantiate(_objectsByName[name], Camera.main.transform.position + dir, Quaternion.identity));
+        var spawnedObject = Instantiate(_objectsByName[name], Camera.main.transform.position + dir, Quaternion.identity); 
+        if (name == "maneken" || name == "manekenng"){
+            spawnedObject.transform.rotation = Quaternion.LookRotation(Vector3.up);
+        }
+        _objectsBuffer.Add(spawnedObject);
     }
 }
