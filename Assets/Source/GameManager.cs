@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using YG;
 
 public class GameManager : MonoBehaviour{
     public static GameManager Instance;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour{
 
         Instance = this;
         _levelIndex = SceneManager.GetActiveScene().buildIndex;
+        
         LoadGame();
         
         var delay = 1f;

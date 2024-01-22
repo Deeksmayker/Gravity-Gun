@@ -118,7 +118,7 @@ public class PlayerInputHandler : MonoBehaviour
                 _jumpInputTimer -= Time.deltaTime;
             } 
         }
-
+/*
         if (_flyCam != null && Input.GetKeyDown(KeyCode.I))
         {
             var noclipEnabled = _flyCam.enabled;
@@ -133,6 +133,7 @@ public class PlayerInputHandler : MonoBehaviour
                 Cursor.visible = false;
             }
         }
+*/
     }
 
     public Vector2 GetGameVector2Input(string actionName){
